@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.mybatis.mapper.UserMapper">
+
+    <select id="version" resultType="string">
+        select version()
+    </select>
+
+    <select id="dbs" resultType="java.lang.String">
+        show databases
+    </select>
+
+
+    <!--通过select标签进行查询
+        id:映射接口的方法名
+        parameterType:指定参数的类型（如果集合类型只需指定集合元素的类型即可）
+        resultType:指定返回的类型-->
+    <select id="selectAll" resultType="com.demo.mybatis.entity.User">
+        select * from user;
+    </select>
+
+    <insert id="add" parameterType="com.demo.mybatis.entity.User">
+        insert into user(username,password,gender,addr) values(#{username},#{password},#{gender},#{address});
+    </insert>
+
+
+</mapper>
